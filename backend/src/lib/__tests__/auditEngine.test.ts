@@ -1,4 +1,4 @@
-import { runAuditEngine, FormInput } from '../auditEngine'
+import { runAuditEngine, FormInput } from '../../services/auditEngine'
 
 describe('Audit Engine', () => {
 

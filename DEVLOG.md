@@ -76,3 +76,29 @@ auditable and defensible.
 URLs are current before submission — prices may have changed.
 **Plan for tomorrow:** Build the frontend — input form with 
 localStorage persistence, results page, lead capture form.
+
+## Day 5 — 2025-05-24
+**Hours worked:** 6
+**What I did:** Pushed backend services that were built yesterday but 
+not committed — aiService.ts (Gemini integration), emailService.ts 
+(Resend), auditController.ts, leadController.ts, and both route files. 
+Fixed Gemini API failure — model gemini-2.0-flash was deprecated in 
+February 2026, switched to gemini-2.5-flash which resolved it. Built 
+the full frontend: lib/api.ts for backend communication, 
+lib/constants.ts with all 8 tool definitions and plans, the main 
+input form at app/page.tsx with localStorage persistence, and the 
+results page at app/audit/[id]/page.tsx showing savings breakdown, 
+AI summary, per-tool recommendations, and Credex CTA for high-savings 
+audits. Added AI service tests covering both success and fallback cases.
+**What I learned:** Gemini model names deprecate fast — gemini-2.0-flash 
+was removed in February 2026 with no warning in the API response except 
+a 404. Always check the current model list before using a hardcoded 
+model name. Also learned that forgetting to stage new files before 
+committing means they silently don't get pushed — use git status 
+religiously before every commit.
+**Blockers / what I'm stuck on:** Lead capture form on results page 
+not built yet. Open Graph meta tags for shareable URLs pending. 
+Entrepreneurial md files (GTM, ECONOMICS, USER_INTERVIEWS) not started.
+**Plan for tomorrow:** Build lead capture form component, add Open 
+Graph tags, start on GTM and ECONOMICS md files, begin user interviews 
+outreach.

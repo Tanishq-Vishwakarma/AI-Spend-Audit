@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { runAuditEngine } from '../lib/auditEngine'
+import { runAuditEngine } from '../services/auditEngine'
 import { generateAuditSummary } from '../services/aiService'
 import { saveAudit, fetchAudit } from '../services/supabaseService'
 

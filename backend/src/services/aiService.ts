@@ -6,7 +6,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY
 export async function generateAuditSummary(auditData: any): Promise<string> {
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -30,6 +30,8 @@ Write in second person. End with one concrete next step. Keep it under 100 words
     )
 
     const data = await response.json() as { candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }> }
+    console.log('Gemini raw response:', JSON.stringify(data, null, 2))
+
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text
     if (!text) throw new Error('No text in response')
     return text
