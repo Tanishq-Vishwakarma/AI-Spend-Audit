@@ -2,6 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import { supabase } from './services/supabaseService'
+import auditRoutes from './routes/audit'
+import leadRoutes from './routes/leads'
 
 dotenv.config()
 
@@ -13,7 +15,11 @@ app.use(cors({
 }))
 app.use(express.json())
 
-// Health check route — tests DB connection
+// Routes
+app.use('/api/audit', auditRoutes)
+app.use('/api/leads', leadRoutes)
+
+// Health check
 app.get('/health', async (req, res) => {
   const { error } = await supabase.from('audits').select('id').limit(1)
   if (error) {
