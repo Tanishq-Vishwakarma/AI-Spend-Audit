@@ -4,10 +4,27 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { getAudit } from '@/lib/api'
 
+type Recommendation = {
+  toolName: string
+  currentPlan: string
+  currentSpend: number
+  recommendedAction: string
+  recommendedPlan: string | null
+  savings: number
+  reason: string
+}
+
+type AuditData = {
+  total_savings: number
+  summary: string
+  recommendations: Recommendation[]
+  show_credex_cta: boolean
+}
+
 export default function AuditPage() {
   const params = useParams()
   const id = params.id as string
-  const [audit, setAudit] = useState<any>(null)
+  const [audit, setAudit] = useState<AuditData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -29,6 +46,8 @@ export default function AuditPage() {
       <p className="text-red-500">{error}</p>
     </div>
   )
+
+  if (!audit) return null
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -59,7 +78,7 @@ export default function AuditPage() {
         {/* Per tool recommendations */}
         <div className="space-y-4 mb-6">
           <h2 className="font-semibold text-gray-900">Recommendations</h2>
-          {audit.recommendations?.map((rec: any, i: number) => (
+          {audit.recommendations?.map((rec: Recommendation, i: number) => (
             <div key={i} className="bg-white rounded-xl border border-gray-200 p-5">
               <div className="flex justify-between items-start">
                 <div>

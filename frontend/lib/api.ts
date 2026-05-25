@@ -1,6 +1,10 @@
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001'
 
-export async function submitAudit(formData: any) {
+export async function submitAudit(formData: {
+  teamSize: number
+  useCase: string
+  tools: { toolId: string; planId: string; seats: number; monthlySpend: number }[]
+}) {
   const res = await fetch(`${BACKEND_URL}/api/audit`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -16,7 +20,13 @@ export async function getAudit(id: string) {
   return res.json()
 }
 
-export async function submitLead(leadData: any) {
+export async function submitLead(leadData: {
+  auditId: string
+  email: string
+  companyName?: string
+  role?: string
+  teamSize?: number
+}) {
   const res = await fetch(`${BACKEND_URL}/api/leads`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
