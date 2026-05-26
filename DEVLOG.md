@@ -102,3 +102,27 @@ Entrepreneurial md files (GTM, ECONOMICS, USER_INTERVIEWS) not started.
 **Plan for tomorrow:** Build lead capture form component, add Open 
 Graph tags, start on GTM and ECONOMICS md files, begin user interviews 
 outreach.
+
+## Day 6 — 2025-05-25
+**Hours worked:** 6
+**What I did:** Fixed all ESLint and TypeScript errors that were 
+failing CI — removed explicit any types from api.ts and audit page, 
+fixed setState in useEffect error by replacing the localStorage read 
+effect with lazy useState initializers. Built lead capture form on 
+results page with email, company name, and role fields plus a honeypot 
+field for basic bot protection. Split the audit results page into a 
+server component (page.tsx) for Open Graph meta tags and a client 
+component (AuditClient.tsx) for interactivity — this was necessary 
+because Next.js generateMetadata only works in server components. 
+Added Open Graph and Twitter Card meta tags that dynamically show 
+savings amounts so shared links look good on social media.
+**What I learned:** You can't use generateMetadata in a client 
+component in Next.js — had to split into server/client pair. Lazy 
+useState initializers (passing a function instead of a value) are 
+the correct pattern for reading localStorage on mount without 
+triggering ESLint warnings.
+**Blockers / what I'm stuck on:** Need to deploy frontend to Vercel 
+and backend to Render. Entrepreneurial md files not started yet.
+**Plan for tomorrow:** Deploy both frontend and backend, write all 
+remaining md files (GTM, ECONOMICS, USER_INTERVIEWS, LANDING_COPY, 
+METRICS, REFLECTION, PROMPTS), final DEVLOG entry, submit.
