@@ -126,3 +126,32 @@ and backend to Render. Entrepreneurial md files not started yet.
 **Plan for tomorrow:** Deploy both frontend and backend, write all 
 remaining md files (GTM, ECONOMICS, USER_INTERVIEWS, LANDING_COPY, 
 METRICS, REFLECTION, PROMPTS), final DEVLOG entry, submit.
+
+## Day 7 — 2025-05-26
+**Hours worked:** 5
+**What I did:** Completed all remaining documentation files —
+REFLECTION, GTM, ECONOMICS, LANDING_COPY, METRICS, PROMPTS,
+TESTS, USER_INTERVIEWS. Successfully deployed frontend to Vercel
+and backend to Render with all environment variables configured.
+Tested the full end-to-end flow on the live deployed URLs —
+form submission, audit generation, Gemini summary, results page,
+shareable URL, and lead capture. Added screenshots to README and
+updated the live URL. Verified PRICING_DATA.md numbers against
+official vendor pages.
+**What I learned:** Resend's free tier has a critical limitation
+I didn't account for during development — the resend.dev sender
+domain can only deliver emails to the same email address used
+to sign up for Resend. Any other recipient gets silently blocked.
+This is a testing domain restriction, not a bug in the code.
+The fix in production would be to verify a custom domain on
+Resend and update the from address — but that requires purchasing
+a domain. For this assignment the email service code is correct
+and complete, the infrastructure limitation is a Resend free
+tier constraint that would be resolved before a real launch.
+**Blockers / what I'm stuck on:** Resend domain restriction
+means transactional emails only reach the Resend account owner's
+email during testing. Documented this honestly rather than
+pretending it works fully.
+**Plan for tomorrow:** Final review of all files, verify git
+log shows commits across 5+ distinct calendar days, submit
+the Google Form before the deadline.

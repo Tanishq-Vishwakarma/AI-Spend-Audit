@@ -108,44 +108,55 @@ doesn't fully complete.
 
 ## 4. How I Used AI Tools
 
-I used Claude (free plan) throughout the week as a 
-development assistant, primarily for things that were 
-completely new to me or would have taken significant 
-time to research from scratch.
+I used Claude (free plan) throughout the week as a development
+assistant, primarily for things that were completely new to me
+or would have taken significant time to research from scratch.
 
-What I used it for: setting up the monorepo structure 
-and install commands, the CI/CD workflow in .github/workflows/
-ci.yml (GitHub Actions was new to me), resolving ESLint 
-errors I hadn't seen before, the Open Graph meta tag 
-implementation in Next.js, and general TypeScript patterns 
-I wasn't familiar with.
+What I used it for: setting up the monorepo structure and
+install commands, the CI/CD workflow in .github/workflows/
+ci.yml (GitHub Actions was new to me), resolving ESLint errors
+I hadn't seen before, the Open Graph meta tag implementation
+in Next.js, and general TypeScript patterns I wasn't familiar
+with. I also used it for the frontend UI components and the
+audit engine logic since I could verify the output made sense,
+and for the entrepreneurial md files like GTM and ECONOMICS
+where I provided the context and direction.
 
-What I didn't trust it with: the pricing data for all 
-the tools in the audit engine. I verified every single 
-price manually against official vendor pricing pages 
-because the audit's credibility depends entirely on 
-those numbers being accurate. I also didn't trust it 
-with the audit logic itself — the rules for when to 
-recommend a downgrade vs elimination needed to be 
-defensible to a finance person, so I wrote and verified 
-those myself.
+What I didn't trust it with: the pricing data for all the
+tools in the audit engine. I verified every single price
+manually against official vendor pricing pages because the
+audit's credibility depends entirely on those numbers being
+accurate. I also didn't trust it with decisions about the
+overall architecture and folder structure — I understood
+those well enough to verify they made sense before committing
+to them.
 
-One specific time the AI was wrong and I caught it: 
-when I asked about the Anthropic API it told me it was 
-free — just sign up and you get access. That was 
-incorrect. The Anthropic API has no free tier and 
-requires a minimum $5 top-up. I caught this when I 
-actually went to console.anthropic.com and saw the 
-billing requirement. This is why I switched to Gemini's 
-genuinely free tier instead. It also reinforced the 
-rule: verify anything cost-related yourself, never 
-trust an AI's answer about pricing.
+One specific time the AI was wrong and I caught it: when I
+asked about the Anthropic API it told me it was free — just
+sign up and you get access. That was incorrect. The Anthropic
+API has no free tier and requires a minimum $5 top-up. I
+caught this when I actually went to console.anthropic.com
+and saw the billing requirement. This is why I switched to
+Gemini's genuinely free tier instead. It also reinforced the
+rule: verify anything cost-related yourself, never trust an
+AI's answer about pricing.
 
-Another instance: the initial setup commands Claude 
-suggested installed Tailwind v4 by default, which has 
-compatibility issues and doesn't apply styling correctly 
-in many setups. I caught it because I've hit this 
-problem before and knew to downgrade to v3 immediately.
+A second instance: the initial setup commands suggested
+installing Tailwind which defaulted to v4, which has
+compatibility issues and doesn't apply styling correctly
+in many setups. I caught it because I've hit this problem
+before and knew to downgrade to v3 immediately.
+
+A third instance discovered during final testing: the email
+service was built correctly and the code works as written,
+but Resend's free tier resend.dev sender domain can only
+deliver emails to the same address used to register the
+Resend account. This is a platform restriction I wasn't
+warned about and only discovered during live testing on the
+deployed URL. In production this would be fixed by verifying
+a custom domain on Resend. The AI never flagged this
+limitation when helping build the email service — I had
+to discover it myself through actual testing.
 
 ---
 
