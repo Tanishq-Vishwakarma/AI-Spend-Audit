@@ -5,7 +5,11 @@ Input your AI tools, plans, and team size — get an instant breakdown
 of where you're overspending and how much you could save monthly and annually.
 
 ## Screenshots
-*Coming soon — adding after UI is built*
+
+![Input Form](assets/screenshots/Form.png)
+![Audit Results](assets/screenshots/Results.png)
+![Lead Capture](assets/screenshots/Lead-Capture.png)
+![Email Confirmation](assets/screenshots/Email-Confirmation.png)
 
 ## Quick Start
 
