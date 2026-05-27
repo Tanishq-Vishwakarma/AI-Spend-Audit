@@ -76,4 +76,4 @@ NEXT_PUBLIC_BACKEND_URL=http://localhost:3001
    for better output quality.
 
 ## Live URL
-*Coming soon — deploying after core features are complete*
+https://ai-spend-audit-six-self.vercel.app/
